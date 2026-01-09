@@ -1,5 +1,7 @@
 package com.hms.user.UserMS.dto;
 
+import com.hms.user.UserMS.entity.User;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
