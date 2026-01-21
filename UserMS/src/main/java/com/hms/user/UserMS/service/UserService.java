@@ -1,5 +1,9 @@
 package com.hms.user.UserMS.service;
 
-public class UserService {
+import com.hms.user.UserMS.dto.UserDTO;
+
+public interface UserService {
+  public void registerUser(UserDTO userDTO);
   
+
 }
