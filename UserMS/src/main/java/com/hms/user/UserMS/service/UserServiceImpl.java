@@ -14,20 +14,14 @@ private UserRepository userRepository;
 
   @Override
   public void registerUser(UserDTO userDTO) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'registerUser'");
   }
 
   @Override
   public UserDTO loginuser(UserDTO userDTO) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'loginuser'");
   }
 
   @Override
   public UserDTO getUserById(Long id) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getUserById'");
   }
 
   @Override
