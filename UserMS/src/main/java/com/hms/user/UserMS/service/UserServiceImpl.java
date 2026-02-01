@@ -27,11 +27,17 @@ private PasswordEncoder passwordEncoder;
       throw new HmsException("USER_ALREADY_EXISTS");
     }
     userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+    userRepository.save(userDTO.toEntity());
   }
 
   @Override
-  public UserDTO loginuser(UserDTO userDTO) {
-    return null;
+  public UserDTO loginUser(UserDTO userDTO) throws HmsException {
+    User user=userRepository.findByEmail(userDTO.getEmail()).orElseThrow(()->new
+  HmsException("USER_NOT_FOUND"));
+  if(!passwordEncoder.matches(userDTO.getPassword(),user.getPassword())){
+    throw new HmsException("INVALID_CREDENTIALS");
+  }
+  return user.toDTO();
   }
 
   @Override
