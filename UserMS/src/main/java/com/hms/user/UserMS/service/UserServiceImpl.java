@@ -42,7 +42,12 @@ private PasswordEncoder passwordEncoder;
 
   @Override
   public UserDTO getUserById(Long id) {
-    return null;
+    User user=userRepository.findByEmail(userDTO.getEmail()).orElseThrow(()->new
+  HmsException("USER_NOT_FOUND"));
+  if(!passwordEncoder.matches(userDTO.getPassword(),user.getPassword())){
+    throw new HmsException("INVALID_CREDENTIALS");
+  }
+  return user.toDTO();
   }
 
   @Override
