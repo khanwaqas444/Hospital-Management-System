@@ -37,17 +37,14 @@ private PasswordEncoder passwordEncoder;
   if(!passwordEncoder.matches(userDTO.getPassword(),user.getPassword())){
     throw new HmsException("INVALID_CREDENTIALS");
   }
+  user.setPassword(null);
   return user.toDTO();
   }
 
   @Override
-  public UserDTO getUserById(Long id) {
-    User user=userRepository.findByEmail(userDTO.getEmail()).orElseThrow(()->new
-  HmsException("USER_NOT_FOUND"));
-  if(!passwordEncoder.matches(userDTO.getPassword(),user.getPassword())){
-    throw new HmsException("INVALID_CREDENTIALS");
-  }
-  return user.toDTO();
+  public UserDTO getUserById(Long id) throws HmsException {
+    return userRepository.findById(id).orElseThrow(()->new
+  HmsException("USER_NOT FOUND")).toDTO();
   }
 
   @Override
